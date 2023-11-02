@@ -10,7 +10,7 @@ import java.util.List;
 
         public static void main(String[] args) {
 
-            String path = "C:\\Users\\Luis Felipe\\Desktop\\ArquivosCsv";
+            String path = "C:\\Users\\Luis Felipe\\Desktop\\Amarelinha---Projeto-de-Revis-o\\Amarelinha\\src\\main\\resources";
 
             List<Cidades> list = new ArrayList<Cidades>();
 
@@ -31,7 +31,7 @@ import java.util.List;
                     line = br.readLine();
                 }
 
-                System.out.println("PRODUCTS:");
+                System.out.println("Cidades:");
                 for (Cidades p : list) {
                     System.out.println(p);
                 }
