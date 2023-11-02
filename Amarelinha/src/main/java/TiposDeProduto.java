@@ -15,19 +15,21 @@ import java.util.Map;
 
  */
 
-public class tiposDeProduto {
+public class TiposDeProduto {
     static private final Map<String, Double> listaDeItens = new HashMap<>(){{
-        put("Celular", 0.7);
-        put("Geladeira", 50.0);
-        put("Air Fryer", 3.5);
-        put("Cadeira", 5.0);
-        put("Luminaria", 0.8);
-        put("Lavadora de roupa", 15.0);
-        put("PlayStation 5", 3.9);
-        put("Nintendo Switch", 0.3);
+        put("CELULAR", 0.7);
+        put("GELADEIRA", 50.0);
+        put("AIR FRYER", 3.5);
+        put("CADEIRA", 5.0);
+        put("LUMINARIA", 0.8);
+        put("LAVADORA DE ROUPA", 15.0);
+        put("PLAYSTATION 5", 3.9);
+        put("NINTENDO SWITCH", 0.3);
     }};
 
     public static void adicionarItem(String item, double peso){
+        item = item.toUpperCase();
+
         if(peso > 0){
             listaDeItens.put(item, peso);
             System.out.println("Item: " + item + " adicionado ao sistema");
@@ -37,12 +39,16 @@ public class tiposDeProduto {
     }
 
     public static boolean verificaExistencia(String item){
+        item = item.toUpperCase();
+
         return listaDeItens.containsKey(item);
     }
 
     public static void atualizarPeso(String item, double novoPeso){
+        item = item.toUpperCase();
+
         if(!verificaExistencia(item)){
-            System.out.println("Item nao existe.");
+            System.out.println("Item: '" + item + "' nao existe.");
             return;
         }
 

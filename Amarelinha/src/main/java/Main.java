@@ -10,7 +10,7 @@ public class Main {
         Teste básico para todas os métodos implementados nas classes tiposDeProduto e novaCarga.
          */
 
-        novaCarga carga1 = new novaCarga();
+        NovaCarga carga1 = new NovaCarga();
 
         carga1.verificarCarga();
 
@@ -25,19 +25,24 @@ public class Main {
         carga1.retirarCarga("PlayStation 5", -2); //Quantidade negativa
 
 
-        tiposDeProduto.adicionarItem("Banana", 0.1);
+        TiposDeProduto.adicionarItem("Banana", 0.1);
         carga1.adicionarCarga("Banana", 50);
 
-        tiposDeProduto.atualizarPeso("Banana", 10);
+        TiposDeProduto.atualizarPeso("Banana", 10);
 
         carga1.verificarCarga();
         System.out.println("Peso total: " + carga1.calcularPesoDaCarga());
+    }
+
+    public static void teste2(){
+        DataBaseMatrices.saudacao(1,1);
     }
 
     public static void main(String[] args) {
         //Execução do código principal
 
         teste1();
+        //teste2();
     }
 
 }

@@ -18,16 +18,22 @@ import java.util.Map;
     Método calcularPesoDaCarga imprime o peso total da carga;
     Método verificarCarga imprime todos os items e suas quantidades presentes.
    */
-public class novaCarga {
+public class NovaCarga {
     private final Map<String, Integer> quantidadeDeItens = new HashMap<>();
 
+
+
+
+
     public void adicionarCarga(String item, int quantidade){
+        item = item.toUpperCase();
+
         if (quantidade < 1){
             System.out.println("Quantidade deve ser maior que 0.");
             return;
         }
 
-        if(tiposDeProduto.verificaExistencia(item)) {
+        if(TiposDeProduto.verificaExistencia(item)) {
             quantidadeDeItens.put(item, quantidade);
             System.out.println("Adicionado " + quantidade + " " + item);
         }else{
@@ -35,12 +41,20 @@ public class novaCarga {
         }
     }
 
+
+
+
+
+
     public void retirarCarga(String item, int quantidade){
+        item = item.toUpperCase();
+
         if(quantidade < 1){
             System.out.println("Quantidade deve ser maior ou igual a 1");
         }
 
         if(!quantidadeDeItens.containsKey(item)){
+            System.out.println("Item: '" + item + "' nao existe na carga");
             return;
         }
 
@@ -59,6 +73,11 @@ public class novaCarga {
         }
     }
 
+
+
+
+
+
     public double calcularPesoDaCarga(){
         if(quantidadeDeItens.isEmpty()){
             return 0;
@@ -68,13 +87,33 @@ public class novaCarga {
 
         for(String i : quantidadeDeItens.keySet()){
             int quantidade = quantidadeDeItens.get(i);
-            double peso = tiposDeProduto.getListaDeItens().get(i);
+            double peso = TiposDeProduto.getListaDeItens().get(i);
 
             acumulado += quantidade * peso;
         }
 
         return acumulado;
     }
+
+
+
+
+
+
+
+//    public double calcularValorDaViagem(String cidade1, String cidade2){
+//        //Aguardando pela funcao pra pegar o valor entre duas cidades por meio do DATABASEMATRICES
+//        int distancia = 0; //Valor placeholder temporario
+//
+//
+//    }
+
+
+
+
+
+
+
 
     public void verificarCarga(){
         System.out.println("------------------------");
@@ -87,8 +126,6 @@ public class novaCarga {
             }
         }
         System.out.println("------------------------");
-
-
     }
 
 }
