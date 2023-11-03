@@ -18,6 +18,11 @@ import java.util.*;
     Método verificarCarga imprime todos os items e suas quantidades presentes.
    */
 abstract class NovaCarga {
+    protected static Map<String, Integer> criarCarga(){
+        return new HashMap<>();
+    }
+
+
     protected static void adicionarCarga(String item, int quantidade, Map<String, Integer> Carga){
         item = item.toUpperCase();
 
@@ -32,7 +37,6 @@ abstract class NovaCarga {
             System.err.println("Item: '"+ item +"' não existe no sistema, adicione o antes de utilizar.");
         }
     }
-
 
 
     protected static void retirarCarga(String item, int quantidade, Map<String, Integer> Carga){
@@ -63,7 +67,6 @@ abstract class NovaCarga {
     }
 
 
-
     protected static double calcularPesoDaCarga(Map<String, Integer> Carga){
         if(Carga.isEmpty()){
             return 0;
@@ -82,11 +85,9 @@ abstract class NovaCarga {
     }
 
 
-
     protected static void verificarCarga(Map<String, Integer> Carga){
         if (Carga.isEmpty()){
             System.out.println("Carga vazia.");
-            return;
         }else{
             for(String i : Carga.keySet()){
                 System.out.println(i + ": " + Carga.get(i));
@@ -94,4 +95,54 @@ abstract class NovaCarga {
         }
     }
 
+
+//    public void calculaMelhorValorInicial(Map<String, Integer> Carga){
+//        double pesoInicial = calcularPesoDaCarga(Carga);
+//        double peso = pesoInicial;
+//
+//        while (peso > 0) {
+//            if (peso > 8000){
+//                peso -= peso >= 10000 ? 10000 : peso;
+//                caminhoes.replace("Grande", caminhoes.get("Grande") + 1);
+//            } else if (peso > 6000) {
+//                peso -= peso >= 8000 ? 8000 : peso;
+//                caminhoes.replace("Medio", caminhoes.get("Medio") + 2);
+//            } else if (peso > 5000) {
+//                peso -= peso >= 6000 ? 6000 : peso;
+//                caminhoes.replace("Pequeno", caminhoes.get("Pequeno") + 2);
+//                caminhoes.replace("Medio", caminhoes.get("Medio") + 1);
+//            } else if (peso > 4000) {
+//                peso -= peso >= 5000 ? 5000 : peso;
+//                caminhoes.replace("Pequeno", caminhoes.get("Pequeno") + 1);
+//                caminhoes.replace("Medio", caminhoes.get("Medio") + 1);
+//            } else if (peso > 2000) {
+//                peso -= peso >= 4000 ? 4000 : peso;
+//                caminhoes.replace("Medio", caminhoes.get("Medio") + 1);
+//            } else if (peso > 1000) {
+//                peso -= peso >= 2000 ? 2000 : peso;
+//                caminhoes.replace("Pequeno", caminhoes.get("Pequeno") + 2);
+//            } else {
+//                peso -= peso;
+//            }
+//        }
+//
+//        double soma = 0;
+//        for(String i : caminhoes.keySet()){
+//            switch (i){
+//                case "Pequeno":
+//                    soma += caminhoes.get(i) * 5.83;
+//                    break;
+//                case "Medio":
+//                    soma += caminhoes.get(i) * 13.42;
+//                    break;
+//                case "Grande":
+//                    soma += caminhoes.get(i) * 29.21;
+//                default:
+//                    soma += 0;
+//                    break;
+//            }
+//        }
+//        System.out.println(pesoInicial);
+//        System.out.println(soma);
+//    }
 }
