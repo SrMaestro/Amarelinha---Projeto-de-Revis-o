@@ -1,14 +1,11 @@
 package Amarelinha.src.main.java;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
     // AVISO: A FUNÇÃO MAIN SEMPRE SERÁ A ÚLTIMA
 
-    public static void teste1(){
-
-
+    public static int teste1(){
+        int valor = CalculaDistanciaCidades.calculaDistancia("PORTO ALEGRE", "RIO BRANCO");
+        return valor;
 
     }
 
@@ -20,7 +17,9 @@ public class Main {
 
 
 
-        //teste1();
+        System.out.println(teste1());
+
+        CalculaDistanciaCidades.visualizarArray();
         //teste2();
         //teste3();
     }
