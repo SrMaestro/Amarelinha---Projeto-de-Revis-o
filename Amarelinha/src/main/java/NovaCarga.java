@@ -1,7 +1,6 @@
 package Amarelinha.src.main.java;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /* Classe responsável por realizar o gerenciamento da carga nos caminhões:
 
@@ -18,75 +17,62 @@ import java.util.Map;
     Método calcularPesoDaCarga imprime o peso total da carga;
     Método verificarCarga imprime todos os items e suas quantidades presentes.
    */
-public class NovaCarga {
-    private final Map<String, Integer> quantidadeDeItens = new HashMap<>();
-
-
-
-
-
-    public void adicionarCarga(String item, int quantidade){
+abstract class NovaCarga {
+    protected static void adicionarCarga(String item, int quantidade, Map<String, Integer> Carga){
         item = item.toUpperCase();
 
         if (quantidade < 1){
-            System.out.println("Quantidade deve ser maior que 0.");
+            System.err.println("Quantidade deve ser maior que 0.");
             return;
         }
 
         if(TiposDeProduto.verificaExistencia(item)) {
-            quantidadeDeItens.put(item, quantidade);
-            System.out.println("Adicionado " + quantidade + " " + item);
+            Carga.put(item, quantidade);
         }else{
-            System.out.println("Item: '"+ item +"' não existe no sistema, adicione o antes de utilizar.");
+            System.err.println("Item: '"+ item +"' não existe no sistema, adicione o antes de utilizar.");
         }
     }
 
 
 
-
-
-
-    public void retirarCarga(String item, int quantidade){
+    protected static void retirarCarga(String item, int quantidade, Map<String, Integer> Carga){
         item = item.toUpperCase();
 
         if(quantidade < 1){
-            System.out.println("Quantidade deve ser maior ou igual a 1");
+            System.err.println("Quantidade deve ser maior ou igual a 1");
         }
 
-        if(!quantidadeDeItens.containsKey(item)){
-            System.out.println("Item: '" + item + "' nao existe na carga");
+        if(!Carga.containsKey(item)){
+            System.err.println("Item: '" + item + "' nao existe na carga");
             return;
         }
 
-        int valorAtual = quantidadeDeItens.get(item);
+        int valorAtual = Carga.get(item);
 
         if(valorAtual >= quantidade){
-            quantidadeDeItens.replace(item, valorAtual-quantidade);
+            Carga.replace(item, valorAtual-quantidade);
             System.out.println("Removido " + quantidade + " " + item + " da carga. Restam: "
-                    + quantidadeDeItens.get(item));
+                    + Carga.get(item));
         }else{
-            System.out.println("Não é possivel remover uma quantidade superior a presente na carga");
+            System.err.println("Não é possivel remover uma quantidade superior a presente na carga");
         }
 
-        if (quantidadeDeItens.get(item) == 0) {
-            quantidadeDeItens.remove(item);
+        if (Carga.get(item) == 0) {
+            Carga.remove(item);
         }
     }
 
 
 
-
-
-
-    public double calcularPesoDaCarga(){
-        if(quantidadeDeItens.isEmpty()){
+    protected static double calcularPesoDaCarga(Map<String, Integer> Carga){
+        if(Carga.isEmpty()){
             return 0;
         }
 
         double acumulado = 0;
 
-        for(String i : quantidadeDeItens.keySet()){
-            int quantidade = quantidadeDeItens.get(i);
+        for(String i : Carga.keySet()){
+            int quantidade = Carga.get(i);
             double peso = TiposDeProduto.getListaDeItens().get(i);
 
             acumulado += quantidade * peso;
@@ -97,35 +83,15 @@ public class NovaCarga {
 
 
 
-
-
-
-
-//    public double calcularValorDaViagem(String cidade1, String cidade2){
-//        //Aguardando pela funcao pra pegar o valor entre duas cidades por meio do DATABASEMATRICES
-//        int distancia = 0; //Valor placeholder temporario
-//
-//
-//    }
-
-
-
-
-
-
-
-
-    public void verificarCarga(){
-        System.out.println("------------------------");
-        if (quantidadeDeItens.isEmpty()){
+    protected static void verificarCarga(Map<String, Integer> Carga){
+        if (Carga.isEmpty()){
             System.out.println("Carga vazia.");
             return;
         }else{
-            for(String i : quantidadeDeItens.keySet()){
-                System.out.println(i + ": " + quantidadeDeItens.get(i));
+            for(String i : Carga.keySet()){
+                System.out.println(i + ": " + Carga.get(i));
             }
         }
-        System.out.println("------------------------");
     }
 
 }
