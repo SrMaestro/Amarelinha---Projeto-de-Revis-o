@@ -8,7 +8,6 @@ public class SegmentoDeViagem extends NovaCarga {
 
     public SegmentoDeViagem(String cidade, Map<String, Integer> Carga){
         this.cidade = cidade;
-        //this.CarregarDescarregar = carregar;
         this.Carga = Carga;
     }
 }

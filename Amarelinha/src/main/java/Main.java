@@ -15,19 +15,21 @@ public class Main {
         SegmentoDeViagem.adicionarCarga("Luminaria", 2000, teste);
 
         Viagem viagemTeste = new Viagem(segmento);
-        viagemTeste.calculaMelhorValorInicial();
     }
 
     public static void teste2(){
         DataBaseMatrices.saudacao(1,1);
     }
 
+    public static void teste3() {Modalidades t = new Modalidades(); t.teste();}
+
     //Execução do código principal
     public static void main(String[] args) {
 
 
-        teste1();
+        //teste1();
         //teste2();
+        teste3();
     }
 
 }

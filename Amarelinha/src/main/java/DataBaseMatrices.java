@@ -61,7 +61,7 @@ public class DataBaseMatrices {
 //        }
 
 
-    public static void saudacao(int numeroLinhas, int numeroColunas) {
+    public static int saudacao(int numeroLinhas, int numeroColunas) {
         String[] linhas = dados.split("\n"); // dividindo as linhas
         int numeroLinhass = linhas.length;
         int numeroColunass = linhas[0].split(";").length;
@@ -73,7 +73,7 @@ public class DataBaseMatrices {
             String[] colunas = linhas[i].split(";");
             matrizDados[i] = colunas;
         }
-
+        return Integer.parseInt(matrizDados[numeroLinhas][numeroColunas]);
         // Agora você tem os dados na matriz matrizDados
         // Você pode acessar os valores assim: matrizDados[linha][coluna]
 
