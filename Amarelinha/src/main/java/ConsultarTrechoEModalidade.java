@@ -14,16 +14,10 @@ public class ConsultarTrechoEModalidade {
             static Map<String, Integer> trechos = new HashMap<>();
             static Map<String, Double> custos = new HashMap<>();
 
-            static {
-                // Inicialize os trechos e custos aqui
-                trechos.put("PORTO ALEGRE-SÃO PAULO", 1000); // Exemplo
-                custos.put("pequeno", 2.0); // Exemplo
-                custos.put("medio", 3.0);   // Exemplo
-                custos.put("grande", 4.0);  // Exemplo
-            }
-
             public static double calcularCusto(int distancia, String tipoCaminhao) {
                 return distancia * custos.get(tipoCaminhao);
+
+
             }
 
             public static void consultarTrecho(String origem, String destino, String tipoCaminhao) {

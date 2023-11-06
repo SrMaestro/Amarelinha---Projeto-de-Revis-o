@@ -8,7 +8,11 @@ public class Modalidades {
     private final ObjetoCaminhao Gigante = new ObjetoCaminhao("Gigante", 62.8, 25000);
     private final ObjetoCaminhao Medio = new ObjetoCaminhao("Medio", 13.42, 4000);
     private final ObjetoCaminhao Grande = new ObjetoCaminhao("Grande", 29.21, 10000);
-
+    public static double
+    getValorKm(String tipoCaminhao){
+        double modalidades = 0;
+        return modalidades ;
+    }
     private final List<ObjetoCaminhao> tiposDeCaminhao = new ArrayList<>();
     {
         tiposDeCaminhao.add(Pequeno);
